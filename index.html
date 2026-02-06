@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DR Premium Utilities | Ecosystem Report</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #00E5FF;
+            --premium-gold: #FFAB00;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #F8FAFC;
+            --admin-purple: #7C4DFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: #020617;
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Fondo Animado de Luces */
+        .mesh-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 229, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(124, 77, 255, 0.15) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 229, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(to right, #fff, var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 15px;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--neon-cyan);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+        }
+
+        /* Secciones de Funcionalidades */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .highlight-item {
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--neon-cyan);
+            height: 100%;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--neon-cyan);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        /* Media / Videos */
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .video-placeholder video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: var(--neon-cyan);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+
+        /* GitHub Button */
+        .btn-github {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #fff;
+            color: #000;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            margin: 40px auto;
+            width: fit-content;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+
+        .btn-github:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.4);
+            background: var(--neon-cyan);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cbd5e1;
+        }
+
+        li i {
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+        }
+
+        .footer-text {
+            text-align: center;
+            color: #475569;
+            padding: 60px 20px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        code {
+            background: rgba(124, 77, 255, 0.2);
+            color: #a78bfa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="mesh-gradient"></div>
+
+    <div class="container">
+        <header>
+            <div class="badge">DR PREMIUM UTILITIES</div>
+            <h1>Ecosystem Report</h1>
+            <p style="color: #94a3b8; font-size: 1.2rem;">Arquitectura Híbrida: Firebase + Supabase + Jetpack Compose</p>
+        </header>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-shield-halved"></i> Seguridad y Roles de Acceso</h2>
+            <div class="feature-grid">
+                <div class="highlight-item" style="border-left-color: var(--admin-purple);">
+                    <h3>🛡️ Acceso Administrativo</h3>
+                    <p>Validación mediante <code>UID</code> y correo jerárquico. Habilita el CRUD maestro, gestión de stock y panel de control flotante.</p>
+                </div>
+                <div class="highlight-item">
+                    <h3>👤 Experiencia del Cliente</h3>
+                    <p>Autenticación fluida que permite la gestión de perfil personal, historial de compras y persistencia de carrito.</p>
+                </div>
+                <div class="highlight-item" style="border-left-color: var(--premium-gold);">
+                    <h3>☁️ Integración Supabase</h3>
+                    <p>Manejo de activos multimedia (Imágenes de productos) mediante Supabase Storage, vinculados por URL en tiempo real.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-boxes-stacked"></i> Control de Inventario & CRUD</h2>
+            <p style="margin-bottom: 20px;">El administrador posee control total sobre el catálogo de perfumería y accesorios.</p>
+            <div class="feature-grid">
+                <div class="highlight-item">
+                    <i class="fas fa-plus-circle" style="color: var(--neon-cyan); margin-bottom: 10px;"></i>
+                    <h3>Agregar & Editar</h3>
+                    <p>Ingreso de nuevos productos con validación de tipos de datos (evitando errores de Double/Long en Firestore).</p>
+                </div>
+                <div class="highlight-item">
+                    <i class="fas fa-sync" style="color: var(--neon-cyan); margin-bottom: 10px;"></i>
+                    <h3>Sincronización Firestore</h3>
+                    <p>Uso de <code>Snapshots</code> para que cualquier cambio en el inventario se refleje al instante en todos los clientes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-play-circle"></i> Demo: UX & Navegación</h2>
+            <p>Visualización del flujo premium, animaciones de categorías y diseño Glassmorphism de la tienda.</p>
+            <div class="video-placeholder">
+                <video controls>
+                    <source src="TU_LINK_VIDEO_DRIVE_DESENVOLVIMIENTO" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+                <div class="video-label">High-End Interface UX</div>
+            </div>
+        </div>
+
+        <div class="glass-card" style="border-left: 4px solid var(--premium-gold);">
+            <h2><i class="fas fa-cart-shopping"></i> Flujo de Compra y Carrito</h2>
+            <div class="feature-grid">
+                <div class="highlight-item">
+                    <h3>🛒 Carrito Persistente</h3>
+                    <p>Gestión de ítems con cálculo automático de totales basado en unidades (ml, gr, oz). Sincronizado con la sesión del usuario.</p>
+                </div>
+                <div class="highlight-item">
+                    <h3>📑 Registro de Órdenes</h3>
+                    <p>Al procesar una compra, se genera un registro histórico en Firestore y se actualiza el stock de forma atómica.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-server"></i> Registro Real-Time (Backend)</h2>
+            <p>Demostración de la entrada de datos simultánea en Firebase (Auth/Store) y Supabase (Storage).</p>
+            <div class="video-placeholder">
+                <video controls>
+                    <source src="TU_LINK_VIDEO_DRIVE_BACKEND" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+                <div class="video-label">Firebase & Supabase Sync</div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-microchip"></i> Highlights Técnicos</h2>
+            <div class="feature-grid">
+                <ul>
+                    <li><i class="fas fa-terminal"></i> Arquitectura MVVM Clean.</li>
+                    <li><i class="fas fa-gem"></i> Estética Glossy con Jetpack Compose.</li>
+                    <li><i class="fas fa-bolt"></i> Carga asíncrona de imágenes (Coil).</li>
+                </ul>
+                <ul>
+                    <li><i class="fas fa-filter"></i> Filtrado reactivo por departamentos.</li>
+                    <li><i class="fas fa-code-branch"></i> Type-safe Navigation.</li>
+                    <li><i class="fas fa-expand"></i> Skeleton Screen Shimmer Effect.</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="https://github.com/diegofernandorupertigordon-glitch/DR.git" class="btn-github" target="_blank">
+            <i class="fab fa-github"></i> EXPLORAR REPOSITORIO GITHUB
+        </a>
+
+        <div class="footer-text">
+            © 2026 DR PREMIUM UTILITIES | Ecosistema Digital de Alta Gama<br>
+            Desarrollado con precisión por <b>Diego Ruperti</b>
+        </div>
+    </div>
+
+</body>
+</html>
