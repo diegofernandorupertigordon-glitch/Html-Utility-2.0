@@ -14,6 +14,7 @@
             --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #F8FAFC;
             --admin-purple: #7C4DFF;
+            --code-bg: rgba(0, 0, 0, 0.4);
         }
 
         * {
@@ -30,6 +31,7 @@
             line-height: 1.6;
         }
 
+        /* Fondo Animado de Luces */
         .mesh-gradient {
             position: fixed;
             top: 0;
@@ -48,6 +50,7 @@
             padding: 40px 20px;
         }
 
+        /* Glass Cards */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
@@ -93,6 +96,7 @@
             border: 1px solid rgba(0, 229, 255, 0.2);
         }
 
+        /* Secciones de Funcionalidades */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -127,7 +131,7 @@
             font-size: 0.95rem;
         }
 
-        /* Video Container con Efecto Shimmer */
+        /* Media / Videos con Shimmer */
         .video-placeholder {
             width: 100%;
             aspect-ratio: 16/9;
@@ -140,7 +144,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Animación Shimmer */
         .video-placeholder::before {
             content: "";
             position: absolute;
@@ -186,6 +189,28 @@
             z-index: 3;
         }
 
+        /* Snippets de Código Estilo Terminal */
+        .code-snippet {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 15px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85rem;
+            color: #a78bfa;
+            border-left: 3px solid var(--admin-purple);
+            margin-top: 15px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            line-height: 1.4;
+        }
+
+        .core-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* GitHub Button */
         .btn-github {
             display: flex;
             align-items: center;
@@ -253,7 +278,6 @@
             border-radius: 4px;
             font-family: monospace;
         }
-
     </style>
 </head>
 <body>
@@ -266,6 +290,53 @@
             <h1>Ecosistema 2.0</h1>
             <p style="color: #94a3b8; font-size: 1.2rem;">Arquitectura Híbrida: Firebase + Supabase + Jetpack Compose</p>
         </header>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-microchip"></i> Core: Motor de la Aplicación</h2>
+            <div class="core-section">
+                <div>
+                    <h3><i class="fas fa-key"></i> Autenticación</h3>
+                    <div class="video-placeholder">
+                        <iframe src="https://drive.google.com/file/d/1Y6qEOizdjxE-PucDX6yQr9PCjPfHUAEv/preview"></iframe>
+                    </div>
+                    <div class="code-snippet">auth.signInWithEmailAndPassword(email, password)
+    .addOnSuccessListener {
+        _error.value = ""
+        onSuccess()
+    }
+    .addOnFailureListener { exception ->
+        _error.value = exception.message ?: "Error al iniciar sesión"
+    }</div>
+                </div>
+
+                <div>
+                    <h3><i class="fas fa-database"></i> Gestión CRUDS</h3>
+                    <div class="video-placeholder">
+                        <iframe src="https://drive.google.com/file/d/1feiBdZb-0GIo6otAzOuS8umfTuRT1SeR/preview"></iframe>
+                    </div>
+                    <div class="code-snippet">val data = hashMapOf(
+    "name" to nombre,
+    "price" to (precioForm.toDoubleOrNull() ?: 0.0),
+    "stock" to (stockForm.toIntOrNull() ?: 0)
+)
+val docRef = if (editingProductId == null) 
+    db.collection("products").document() 
+else 
+    db.collection("products").document(editingProductId!!)</div>
+                </div>
+
+                <div>
+                    <h3><i class="fas fa-cloud-arrow-up"></i> Multimedia Supabase</h3>
+                    <div class="video-placeholder">
+                        <iframe src="https://drive.google.com/file/d/1jGOAKOoME57GCwu4dFx5Xv4WRHvn5anq/preview"></iframe>
+                    </div>
+                    <div class="code-snippet">val fileName = "prod_${System.currentTimeMillis()}.jpg"
+bucket.upload(path = fileName, data = bytes)
+val publicUrl = ".../Utility/$fileName"
+db.collection("products").document(id).delete()</div>
+                </div>
+            </div>
+        </div>
 
         <div class="glass-card">
             <h2><i class="fas fa-shield-halved"></i> Seguridad y Roles de Acceso</h2>
@@ -306,7 +377,7 @@
             <h2><i class="fas fa-play-circle"></i> Demo: UX & Navegación</h2>
             <p>Visualización del flujo premium, animaciones de categorías y diseño Glassmorphism de la tienda.</p>
             <div class="video-placeholder">
-                <iframe src="https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview" allow="autoplay"></iframe>
+                <iframe src="https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview"></iframe>
                 <div class="video-label">High-End Interface UX</div>
             </div>
         </div>
@@ -329,7 +400,7 @@
             <h2><i class="fas fa-server"></i> Registro Real-Time (Backend)</h2>
             <p>Demostración de la entrada de datos simultánea en Firebase (Auth/Store) y Supabase (Storage).</p>
             <div class="video-placeholder">
-                <iframe src="https://drive.google.com/file/d/1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7/preview" allow="autoplay"></iframe>
+                <iframe src="https://drive.google.com/file/d/1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7/preview"></iframe>
                 <div class="video-label">Firebase & Supabase Sync</div>
             </div>
         </div>
