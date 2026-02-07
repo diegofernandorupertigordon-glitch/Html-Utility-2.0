@@ -30,7 +30,6 @@
             line-height: 1.6;
         }
 
-        /* Fondo Animado de Luces */
         .mesh-gradient {
             position: fixed;
             top: 0;
@@ -49,7 +48,6 @@
             padding: 40px 20px;
         }
 
-        /* Glass Cards */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
@@ -95,7 +93,6 @@
             border: 1px solid rgba(0, 229, 255, 0.2);
         }
 
-        /* Secciones de Funcionalidades */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -130,15 +127,12 @@
             font-size: 0.95rem;
         }
 
-        /* Media / Videos */
+        /* Video Container con Efecto Shimmer */
         .video-placeholder {
             width: 100%;
             aspect-ratio: 16/9;
-            background: #000;
+            background: #0f172a;
             border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin: 20px 0;
             border: 1px solid var(--glass-border);
             overflow: hidden;
@@ -146,10 +140,36 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .video-placeholder video {
+        /* Animación Shimmer */
+        .video-placeholder::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(
+                90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.03) 50%, 
+                transparent 100%
+            );
+            animation: shimmer 2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .video-placeholder iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            border: none;
+            position: relative;
+            z-index: 2;
+            background: transparent;
         }
 
         .video-label {
@@ -163,9 +183,9 @@
             font-size: 0.8rem;
             color: var(--neon-cyan);
             border: 1px solid rgba(0, 229, 255, 0.3);
+            z-index: 3;
         }
 
-        /* GitHub Button */
         .btn-github {
             display: flex;
             align-items: center;
@@ -189,10 +209,7 @@
             background: var(--neon-cyan);
         }
 
-        ul {
-            list-style: none;
-        }
-
+        ul { list-style: none; }
         li {
             margin-bottom: 12px;
             display: flex;
@@ -206,7 +223,6 @@
             font-size: 0.9rem;
         }
 
-        /* Estilo para el área de contacto */
         .contact-link {
             color: var(--neon-cyan);
             text-decoration: none;
@@ -290,10 +306,7 @@
             <h2><i class="fas fa-play-circle"></i> Demo: UX & Navegación</h2>
             <p>Visualización del flujo premium, animaciones de categorías y diseño Glassmorphism de la tienda.</p>
             <div class="video-placeholder">
-                <video controls>
-                    <source src="https://drive.google.com/uc?export=download&id=1GVE3xdwQIRXDut96DRrclmxXvF44tU2F" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
+                <iframe src="https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview" allow="autoplay"></iframe>
                 <div class="video-label">High-End Interface UX</div>
             </div>
         </div>
@@ -316,10 +329,7 @@
             <h2><i class="fas fa-server"></i> Registro Real-Time (Backend)</h2>
             <p>Demostración de la entrada de datos simultánea en Firebase (Auth/Store) y Supabase (Storage).</p>
             <div class="video-placeholder">
-                <video controls>
-                    <source src="https://drive.google.com/uc?export=download&id=1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
+                <iframe src="https://drive.google.com/file/d/1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7/preview" allow="autoplay"></iframe>
                 <div class="video-label">Firebase & Supabase Sync</div>
             </div>
         </div>
