@@ -1,147 +1,80 @@
-💎 DR Premium Utilities & Perfumery Ecosystem
+# 💎 DR Premium Utilities | Ecosistema 2.0
+> **Arquitectura Híbrida de Alta Gama:** Firebase + Supabase + Jetpack Compose.
 
+Este ecosistema representa una solución digital de vanguardia diseñada para la gestión de inventarios y experiencias de usuario premium. Construido bajo una arquitectura robusta, combina la potencia de procesamiento de datos en tiempo real de Firebase con el almacenamiento eficiente de Supabase y una interfaz moderna en Jetpack Compose.
 
+---
 
+## 🏗️ Arquitectura y Stack Tecnológico
 
+El proyecto se fundamenta en principios de diseño modernos y una ingeniería de software escalable:
 
+* **Frontend:** Jetpack Compose (Estética Glassmorphism).
+* **Backend & Auth:** Firebase (Authentication & Firestore).
+* **Storage:** Supabase Storage (Gestión de activos multimedia).
+* **Patrón de Diseño:** MVVM (Model-View-ViewModel) + Clean Architecture.
+* **Librerías Clave:** Coil (Carga asíncrona), Type-safe Navigation, Snapshots en tiempo real.
 
+---
 
+## 🛡️ Seguridad y Control de Acceso
 
+El sistema implementa una lógica de permisos jerárquica para garantizar la integridad de los datos:
 
+### 1. Panel Administrativo (Master CRUD)
+* **Validación:** Control mediante `UID` y dominios de correo jerárquicos.
+* **Capacidades:** Gestión total de stock, control de usuarios y acceso a un panel de control flotante exclusivo.
 
-DR Premium Utilities es un ecosistema móvil de alto rendimiento y estética premium, diseñado para combinar herramientas profesionales con un sistema de e-commerce exclusivo para perfumería de lujo.
+### 2. Experiencia del Cliente
+* **Gestión de Perfil:** Autenticación fluida y persistencia de datos.
+* **Interacción:** Historial de compras personalizado y persistencia de carrito de compras sincronizado.
 
-El proyecto prioriza experiencia visual, seguridad, escalabilidad y sincronización en tiempo real, integrando múltiples servicios cloud bajo una arquitectura limpia y moderna.
+---
 
-🌌 Experiencia de Usuario (UX/UI)
+## 📦 Gestión de Inventario & E-commerce
 
-La aplicación adopta un lenguaje visual High-End, enfocado en elegancia, claridad y fluidez:
+El núcleo del ecosistema permite una administración granular del catálogo de productos:
 
-Neon Cyan Aesthetics
-Acentos en #00E5FF que refuerzan jerarquía visual y navegación intuitiva.
+| Funcionalidad | Descripción | Tec. Principal |
+| :--- | :--- | :--- |
+| **CRUD Maestro** | Alta, baja y edición de productos con validaciones estrictas. | Firestore |
+| **Sincronización** | Actualización instantánea de stock en todos los clientes conectados. | Snapshots |
+| **Multimedia** | Vinculación de imágenes de alta resolución mediante URLs dinámicas. | Supabase |
+| **Cálculo Métrico** | Gestión de unidades automática (ml, gr, oz) para perfumería. | Kotlin Logic |
 
-Glassmorphism & Depth
-Contenedores translúcidos, bordes suaves y sombras dinámicas (spotColor) para sensación de profundidad premium.
+---
 
-Micro-interacciones
-Animaciones sutiles de entrada (Alpha / Scale) y transiciones de estado con HorizontalPager.
+## 🚀 Highlights Técnicos (Informe de Rendimiento)
 
-Skeleton Loading
-Pantallas de carga elegantes que reducen la percepción de espera y mejoran la experiencia continua.
+* **Estética Premium:** Interfaz basada en **Glassmorphism** con efectos de desenfoque y gradientes mesh.
+* **Optimización de Datos:** Prevención de errores de tipo (Double/Long) en la persistencia de Firestore.
+* **UX Fluida:** Implementación de *Skeleton Screens* y *Shimmer Effects* para una carga percibida ultra-rápida.
+* **Reactividad:** Filtrado de productos por departamentos en tiempo real sin recarga de página.
 
-🚀 Características Principales
-🔐 Seguridad y Autenticación
+---
 
-Multi-Auth: Email/Password y Google Sign-In.
+## 🎥 Demos de Funcionamiento
 
-RBAC (Role-Based Access Control):
-Acceso administrativo validado por UID + Email en tiempo real.
+### UX & Navegación Premium
+Visualización del flujo de usuario, animaciones de categorías y diseño de tienda de alta gama.
+[Aquí iría tu video de UX]
 
-Sesión Persistente:
-Manejo seguro de tokens y control de revocación de accesos.
+### Backend & Sincronización Real-Time
+Demostración de la entrada de datos simultánea en Firebase y Supabase.
+[Aquí iría tu video de Backend]
 
-🧴 E-Commerce de Perfumería Premium
+---
 
-Catálogo Inteligente:
-Organización por departamentos (Perfumería, Maquillaje, Accesorios).
+## 📩 Contacto y Colaboración
 
-Búsqueda Reactiva:
-Filtrado dinámico en tiempo real mediante StateFlow.
+Para consultas técnicas, soporte especializado o propuestas de colaboración sobre este ecosistema:
 
-Fichas de Producto Avanzadas:
-Manejo de unidades (ml, gr, oz) con sincronización directa al stock en Firestore.
+* **Desarrollador:** Diego Ruperti
+* **Email:** [diegoruperti1987@hotmail.com](mailto:diegoruperti1987@hotmail.com)
+* **Web:** [Explorar Demo Live](https://diegofernandorupertigordon-glitch.github.io/Html-Utility-2.0/)
 
-Carrito Persistente:
-Estado de compra conservado por sesión de usuario.
-
-🛠️ Herramientas Utility
-
-Módulo integrado de utilidades profesionales.
-
-Arquitectura desacoplada y escalable.
-
-Preparado para expansión futura del ecosistema.
-
-🧠 Arquitectura del Sistema
-
-Patrón: MVVM + Clean Architecture
-
-Gestión de Estado: StateFlow
-
-Sincronización: Real-time updates con Firestore Snapshots
-
-Separación de Capas: UI / Domain / Data
-
-Diseñada para mantenibilidad, testabilidad y crecimiento sostenido.
-
-🛠️ Stack Tecnológico
-
-Lenguaje:
-Kotlin
- — Moderno, seguro y expresivo.
-
-UI:
-Jetpack Compose
- — UI declarativa con Material 3.
-
-Backend:
-Firebase
-
-Authentication: Gestión global de usuarios.
-
-Firestore: Base de datos NoSQL en tiempo real.
-
-Storage:
-Supabase Storage
- — Gestión de activos multimedia (imágenes de productos).
-
-Carga de Imágenes:
-Coil
- — Caché optimizada y crossfade.
-
-Navegación:
-Type-safe Navigation Graph.
-
-📦 Instalación y Configuración
-
-Clonar el repositorio
-
-git clone https://github.com/diegofernandorupertigordon-glitch/DR.git
-
-
-Configurar Firebase
-
-Crear un proyecto en Firebase Console.
-
-Añadir google-services.json en app/.
-
-Habilitar Authentication (Email & Google).
-
-Configurar Firestore Database.
-
-Ejecutar el proyecto
-
-Abrir en Android Studio (Ladybug o superior).
-
-Sincronizar Gradle.
-
-Ejecutar en dispositivo físico o emulador.
-
-👤 Developer & Admin
-
-El acceso administrativo está preconfigurado para el ecosistema del desarrollador principal:
-
-Lead Developer: Diego Ruperti
-
-Admin Email: diegoruperti1987@hotmail.com
-
-🌐 Demo Web
-
-🔗 https://diegofernandorupertigordon-glitch.github.io/Html-Utility-2.0/
-
-📜 Licencia
-
-Este proyecto es propiedad intelectual de Diego Ruperti.
-Uso, modificación o distribución sin autorización expresa no permitidos.
-
-Diseñado con precisión, estética y visión de producto premium. ✨
+---
+<p align="center">
+  <b>© 2026 DR PREMIUM UTILITIES</b><br>
+  Desarrollado con precisión técnica y enfoque en el diseño de lujo.
+</p>
