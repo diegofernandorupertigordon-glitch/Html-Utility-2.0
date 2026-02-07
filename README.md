@@ -1,56 +1,69 @@
-🌌 DR Premium Utilities — Ecosistema 2.0
-<p align="center"> <strong>Arquitectura híbrida de alto nivel</strong><br> Firebase • Supabase • Jetpack Compose • UX Premium </p> <p align="center"> <a href="https://diegofernandorupertigordon-glitch.github.io/Html-Utility-2.0/">🌐 Demo Web</a> • <a href="https://github.com/diegofernandorupertigordon-glitch/DR.git">💻 Repositorio</a> </p>
-✨ Descripción General
+<div align="center">
+DR Premium Utilities
+Ecosistema 2.0
 
-DR Premium Utilities – Ecosistema 2.0 es una plataforma digital de gestión comercial y experiencia de compra premium, diseñada bajo principios de arquitectura limpia, seguridad avanzada y experiencia visual de alto impacto.
+Plataforma digital premium con arquitectura híbrida moderna
 
-El sistema implementa una arquitectura híbrida donde:
+<br>
 
-Firebase gestiona autenticación, base de datos en tiempo real y órdenes.
 
-Supabase se encarga del almacenamiento de activos multimedia.
 
-Jetpack Compose proporciona una interfaz moderna, fluida y reactiva.
 
-Todo el ecosistema está enfocado en rendimiento, escalabilidad y estética profesional.
 
-🧠 Arquitectura del Sistema
-Usuario
- ├── Firebase Authentication
- ├── Firestore (Catálogo, Órdenes, Usuarios)
- └── Supabase Storage (Imágenes)
- 
-Frontend
- └── Jetpack Compose (MVVM + Clean Architecture)
 
-Principios aplicados
 
-MVVM + Clean Architecture
 
-Separación de responsabilidades
+
+
+<br>
+
+🌐 Demo Web
+ •
+💻 Repositorio GitHub
+
+</div>
+📌 Visión General
+
+DR Premium Utilities – Ecosistema 2.0 es una solución digital de gestión comercial e interacción premium, desarrollada bajo estándares modernos de arquitectura limpia, seguridad avanzada y experiencia de usuario de alto nivel.
+
+El sistema integra múltiples servicios cloud de forma armónica, logrando una plataforma escalable, robusta y visualmente sofisticada.
+
+🧩 Arquitectura del Ecosistema
+graph TD
+    U[Usuario] --> A[Firebase Auth]
+    A --> F[Firestore Database]
+    U --> S[Supabase Storage]
+    F --> UI[Jetpack Compose UI]
+    S --> UI
+
+Principios Clave
+
+Clean Architecture
+
+Patrón MVVM
+
+Separación estricta de capas
 
 Sincronización en tiempo real
 
-Type-safe navigation
+Navegación type-safe
 
-Manejo eficiente de estados
+🔐 Gestión de Seguridad y Roles
+🛡️ Rol Administrador
 
-🔐 Seguridad y Roles
-🛡️ Administrador
+Autenticación por UID + correo jerárquico
 
-Validación por UID y correo jerárquico
+Acceso completo a:
 
-Acceso a:
-
-CRUD completo de productos
+CRUD maestro de productos
 
 Gestión de inventario
 
-Panel de control flotante
+Control de stock en tiempo real
 
-Actualización de stock en tiempo real
+Panel administrativo flotante
 
-👤 Cliente
+👤 Rol Cliente
 
 Autenticación fluida
 
@@ -60,82 +73,76 @@ Historial de compras
 
 Carrito persistente
 
-Navegación optimizada
+Experiencia de navegación optimizada
 
-📦 Control de Inventario (CRUD)
+📦 Inventario & CRUD
 
-Creación y edición de productos
+Alta, edición y eliminación de productos
 
 Validación estricta de tipos de datos
 
-Prevención de errores Double / Long en Firestore
+Prevención de errores comunes (Double / Long)
 
-Actualización instantánea mediante Snapshots
+Actualización automática mediante Firestore Snapshots
 
-Sincronización automática entre clientes
+Sincronización instantánea entre clientes
 
 🛒 Flujo de Compra
 
 Carrito persistente por sesión
 
-Cálculo automático por unidades (ml, gr, oz)
+Cálculo dinámico por unidades (ml, gr, oz)
 
-Registro de órdenes en Firestore
+Registro histórico de órdenes
 
 Actualización de stock atómica
 
-Historial de compras por usuario
+Integridad transaccional garantizada
 
 🎨 Experiencia de Usuario (UX/UI)
 
-Estética Glassmorphism premium
+Diseño Glassmorphism Premium
 
-Animaciones fluidas
+Animaciones suaves y transiciones limpias
 
-Navegación reactiva por categorías
+Filtrado reactivo por categorías
 
-Skeleton Screen con efecto Shimmer
+Skeleton Screens con efecto Shimmer
 
-Diseño enfocado en conversión y elegancia
+Enfoque en claridad, estética y conversión
 
-⚙️ Highlights Técnicos
-
-✔ Arquitectura MVVM Clean
-✔ Jetpack Compose moderno
-✔ Coil para carga asíncrona de imágenes
-✔ Filtrado reactivo por departamentos
-✔ Type-safe Navigation
-✔ Sincronización Firebase + Supabase
-✔ Preparado para escalabilidad
-
+⚙️ Stack Tecnológico
+Capa	Tecnología
+UI	Jetpack Compose
+Lenguaje	Kotlin
+Arquitectura	MVVM + Clean
+Auth	Firebase Authentication
+Base de Datos	Firestore
+Storage	Supabase Storage
+Imágenes	Coil
+Navegación	Type-safe Navigation
 🎥 Demostraciones
 
-El proyecto incluye:
+Incluye:
 
-Demo de UX y navegación premium
+Flujo completo de navegación UX
 
-Registro de datos en tiempo real (Firebase & Supabase)
+Gestión administrativa
 
-Flujo completo de compra
+Sincronización Firebase + Supabase
 
-(Los enlaces a video pueden configurarse en el HTML principal)
+Flujo de compra en tiempo real
 
-🌐 Demo en Vivo
+(Los enlaces a video se definen en el HTML principal)
 
-👉 Sitio Web del Proyecto
+🌍 Demo en Producción
+
+🔗 Sitio Web Oficial del Proyecto
 https://diegofernandorupertigordon-glitch.github.io/Html-Utility-2.0/
 
-📬 Contacto
-
-¿Deseas colaborar, integrar este ecosistema o solicitar soporte técnico?
+📬 Contacto Profesional
 
 Diego Ruperti
-📧 diegoruperti1987@hotmail.com
+Desarrollador del Ecosistema DR Premium Utilities
 
-🏆 Autor
-
-DR Premium Utilities
-Ecosistema Digital de Alta Gama
-Desarrollado con precisión y visión profesional 🚀
-
-© 2026 — Todos los derechos reservados
+📧 Email: diegoruperti1987@hotmail.com
