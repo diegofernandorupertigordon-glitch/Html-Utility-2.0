@@ -388,7 +388,6 @@
             font-family: monospace;
         }
 
-        /* Soporte para selección de texto personalizada */
         ::selection {
             background: var(--neon-cyan);
             color: #000;
@@ -539,12 +538,12 @@ db.collection("products").document(id).delete()</div>
         <div class="glass-card">
             <h2><i class="fas fa-microchip"></i> Highlights Técnicos</h2>
             <div class="feature-grid">
-                <ul style="list-style: none;">
+                <ul>
                     <li><i class="fas fa-terminal"></i> Arquitectura MVVM Clean.</li>
                     <li><i class="fas fa-gem"></i> Estética Glossy con Jetpack Compose.</li>
                     <li><i class="fas fa-bolt"></i> Carga asíncrona de imágenes (Coil).</li>
                 </ul>
-                <ul style="list-style: none;">
+                <ul>
                     <li><i class="fas fa-filter"></i> Filtrado reactivo por departamentos.</li>
                     <li><i class="fas fa-code-branch"></i> Type-safe Navigation.</li>
                     <li><i class="fas fa-expand"></i> Skeleton Screen Shimmer Effect.</li>
@@ -581,7 +580,6 @@ db.collection("products").document(id).delete()</div>
     </div>
 
     <script>
-        // Actualizar barra de progreso al hacer scroll
         window.onscroll = function() {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -596,10 +594,6 @@ db.collection("products").document(id).delete()</div>
             
             iframe.src = autoPlayUrl;
             lightbox.classList.add('active');
-            
-            iframe.onclick = function(e) {
-                e.stopPropagation();
-            }
         }
 
         function closeZoom() {
@@ -610,7 +604,6 @@ db.collection("products").document(id).delete()</div>
             iframe.src = '';
         }
 
-        // Cerrar con tecla Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 closeZoom();
