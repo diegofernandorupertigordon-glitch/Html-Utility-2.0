@@ -174,7 +174,7 @@
             position: relative;
             z-index: 2;
             background: transparent;
-            pointer-events: none; /* Permite que el clic pase al contenedor para el zoom */
+            pointer-events: none;
         }
 
         .video-label {
@@ -195,15 +195,28 @@
         .code-snippet {
             background: var(--code-bg);
             padding: 15px;
-            border-radius: 15px;
+            border-radius: 0 0 15px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             font-size: 0.85rem;
             color: #a78bfa;
             border-left: 3px solid var(--admin-purple);
-            margin-top: 15px;
             overflow-x: auto;
             white-space: pre-wrap;
             line-height: 1.4;
+            min-height: 180px; 
+        }
+
+        .code-header {
+            background: rgba(124, 77, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 15px 15px 0 0;
+            border-left: 3px solid var(--admin-purple);
+            font-size: 0.75rem;
+            color: var(--admin-purple);
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         /* AJUSTE VERTICAL CORE */
@@ -215,9 +228,9 @@
 
         .core-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 45% 55%; 
             gap: 30px;
-            align-items: start;
+            align-items: end; 
         }
 
         @media (max-width: 850px) {
@@ -229,7 +242,7 @@
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             z-index: 9999;
             justify-content: center;
             align-items: center;
@@ -240,12 +253,16 @@
             height: 80%;
             border-radius: 20px;
             border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 50px rgba(0, 229, 255, 0.2);
         }
         .close-btn {
             position: absolute;
             top: 20px; right: 30px;
             color: white; font-size: 3rem; cursor: pointer;
+            z-index: 10001;
+            transition: 0.3s;
         }
+        .close-btn:hover { color: var(--neon-cyan); transform: scale(1.1); }
 
         /* MEJORA PORTADA UX */
         .ux-video-container {
@@ -358,7 +375,9 @@
                             <iframe src="https://drive.google.com/file/d/1Y6qEOizdjxE-PucDX6yQr9PCjPfHUAEv/preview"></iframe>
                         </div>
                     </div>
-                    <div class="code-snippet">auth.signInWithEmailAndPassword(email, password)
+                    <div>
+                        <div class="code-header"><span><i class="fas fa-code"></i> IMPLEMENTACIÓN TÉCNICA</span> <i class="fas fa-circle" style="font-size: 8px;"></i></div>
+                        <div class="code-snippet">auth.signInWithEmailAndPassword(email, password)
     .addOnSuccessListener {
         _error.value = ""
         onSuccess()
@@ -366,6 +385,7 @@
     .addOnFailureListener { exception ->
         _error.value = exception.message ?: "Error al iniciar sesión"
     }</div>
+                    </div>
                 </div>
 
                 <div class="core-row">
@@ -375,7 +395,9 @@
                             <iframe src="https://drive.google.com/file/d/1feiBdZb-0GIo6otAzOuS8umfTuRT1SeR/preview"></iframe>
                         </div>
                     </div>
-                    <div class="code-snippet">val data = hashMapOf(
+                    <div>
+                        <div class="code-header"><span><i class="fas fa-terminal"></i> LÓGICA DE PERSISTENCIA</span> <i class="fas fa-circle" style="font-size: 8px;"></i></div>
+                        <div class="code-snippet">val data = hashMapOf(
     "name" to nombre,
     "price" to (precioForm.toDoubleOrNull() ?: 0.0),
     "stock" to (stockForm.toIntOrNull() ?: 0)
@@ -384,6 +406,7 @@ val docRef = if (editingProductId == null)
     db.collection("products").document() 
 else 
     db.collection("products").document(editingProductId!!)</div>
+                    </div>
                 </div>
 
                 <div class="core-row">
@@ -393,10 +416,13 @@ else
                             <iframe src="https://drive.google.com/file/d/1jGOAKOoME57GCwu4dFx5Xv4WRHvn5anq/preview"></iframe>
                         </div>
                     </div>
-                    <div class="code-snippet">val fileName = "prod_${System.currentTimeMillis()}.jpg"
+                    <div>
+                        <div class="code-header"><span><i class="fas fa-cloud"></i> STORAGE HANDLER</span> <i class="fas fa-circle" style="font-size: 8px;"></i></div>
+                        <div class="code-snippet">val fileName = "prod_${System.currentTimeMillis()}.jpg"
 bucket.upload(path = fileName, data = bytes)
 val publicUrl = ".../Utility/$fileName"
 db.collection("products").document(id).delete()</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -507,19 +533,33 @@ db.collection("products").document(id).delete()</div>
         </div>
     </div>
 
-    <div id="lightbox" class="lightbox">
+    <div id="lightbox" class="lightbox" onclick="closeZoom()">
         <span class="close-btn" onclick="closeZoom()">&times;</span>
-        <iframe id="zoom-iframe" src=""></iframe>
+        <iframe id="zoom-iframe" src="" allow="autoplay"></iframe>
     </div>
 
     <script>
         function openZoom(url) {
-            document.getElementById('zoom-iframe').src = url;
-            document.getElementById('lightbox').classList.add('active');
+            // Añadimos &autoplay=1 a la URL de Drive para que inicie solo
+            const autoPlayUrl = url + "&autoplay=1";
+            const iframe = document.getElementById('zoom-iframe');
+            const lightbox = document.getElementById('lightbox');
+            
+            iframe.src = autoPlayUrl;
+            lightbox.classList.add('active');
+            
+            // Evitar que el clic en el iframe cierre el lightbox
+            iframe.onclick = function(e) {
+                e.stopPropagation();
+            }
         }
+
         function closeZoom() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.getElementById('zoom-iframe').src = '';
+            const lightbox = document.getElementById('lightbox');
+            const iframe = document.getElementById('zoom-iframe');
+            
+            lightbox.classList.remove('active');
+            iframe.src = '';
         }
     </script>
 </body>
