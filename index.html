@@ -17,6 +17,18 @@
             --code-bg: rgba(0, 0, 0, 0.4);
         }
 
+        /* Barra de lectura superior */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--admin-purple));
+            z-index: 10002;
+            transition: width 0.1s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +43,7 @@
             line-height: 1.6;
         }
 
-        /* Fondo Animado de Luces */
+        /* Fondo Animado de Luces Mejorado */
         .mesh-gradient {
             position: fixed;
             top: 0;
@@ -42,6 +54,12 @@
                 radial-gradient(circle at 10% 20%, rgba(0, 229, 255, 0.15) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(124, 77, 255, 0.15) 0%, transparent 40%);
             z-index: -1;
+            animation: pulseBg 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseBg {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
         }
 
         .container {
@@ -60,12 +78,13 @@
             padding: 40px;
             margin-bottom: 30px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .glass-card:hover {
-            border-color: rgba(0, 229, 255, 0.3);
-            transform: translateY(-5px);
+            border-color: rgba(0, 229, 255, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -12px rgba(0, 229, 255, 0.15);
         }
 
         header {
@@ -94,9 +113,14 @@
             letter-spacing: 2px;
             margin-bottom: 20px;
             border: 1px solid rgba(0, 229, 255, 0.2);
+            animation: fadeInDown 1s ease;
         }
 
-        /* Secciones de Funcionalidades */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -109,6 +133,11 @@
             background: rgba(255, 255, 255, 0.02);
             border-left: 4px solid var(--neon-cyan);
             height: 100%;
+            transition: 0.3s;
+        }
+
+        .highlight-item:hover {
+            background: rgba(255, 255, 255, 0.05);
         }
 
         h2 {
@@ -142,7 +171,12 @@
             overflow: hidden;
             position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            cursor: zoom-in;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .video-placeholder:hover {
+            border-color: var(--neon-cyan);
         }
 
         .video-placeholder::before {
@@ -246,6 +280,7 @@
             z-index: 9999;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(10px);
         }
         .lightbox.active { display: flex; }
         .lightbox iframe {
@@ -352,10 +387,17 @@
             border-radius: 4px;
             font-family: monospace;
         }
+
+        /* Soporte para selección de texto personalizada */
+        ::selection {
+            background: var(--neon-cyan);
+            color: #000;
+        }
     </style>
 </head>
 <body>
 
+    <div id="scroll-progress"></div>
     <div class="mesh-gradient"></div>
 
     <div class="container">
@@ -539,6 +581,14 @@ db.collection("products").document(id).delete()</div>
     </div>
 
     <script>
+        // Actualizar barra de progreso al hacer scroll
+        window.onscroll = function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+        };
+
         function openZoom(url) {
             const autoPlayUrl = url.includes('?') ? url + "&autoplay=1" : url + "?autoplay=1";
             const iframe = document.getElementById('zoom-iframe');
@@ -559,6 +609,13 @@ db.collection("products").document(id).delete()</div>
             lightbox.classList.remove('active');
             iframe.src = '';
         }
+
+        // Cerrar con tecla Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeZoom();
+            }
+        });
     </script>
 </body>
 </html>
