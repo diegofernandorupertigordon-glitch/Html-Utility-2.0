@@ -142,6 +142,7 @@
             overflow: hidden;
             position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            cursor: zoom-in;
         }
 
         .video-placeholder::before {
@@ -173,6 +174,7 @@
             position: relative;
             z-index: 2;
             background: transparent;
+            pointer-events: none; /* Permite que el clic pase al contenedor para el zoom */
         }
 
         .video-label {
@@ -204,10 +206,65 @@
             line-height: 1.4;
         }
 
+        /* AJUSTE VERTICAL CORE */
         .core-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .core-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
+            align-items: start;
+        }
+
+        @media (max-width: 850px) {
+            .core-row { grid-template-columns: 1fr; }
+        }
+
+        /* LIGHTBOX PARA ZOOM */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox iframe {
+            width: 85%;
+            height: 80%;
+            border-radius: 20px;
+            border: 2px solid var(--neon-cyan);
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px; right: 30px;
+            color: white; font-size: 3rem; cursor: pointer;
+        }
+
+        /* MEJORA PORTADA UX */
+        .ux-video-container {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            background: #000;
+        }
+        .ux-video-container::after {
+            content: "CLICK PARA AMPLIAR DEMO";
+            position: absolute;
+            top: 10px; right: 10px;
+            background: var(--neon-cyan);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 5px;
+            z-index: 10;
         }
 
         /* GitHub Button */
@@ -294,10 +351,12 @@
         <div class="glass-card">
             <h2><i class="fas fa-microchip"></i> Core: Motor de la Aplicación</h2>
             <div class="core-section">
-                <div>
-                    <h3><i class="fas fa-key"></i> Autenticación</h3>
-                    <div class="video-placeholder">
-                        <iframe src="https://drive.google.com/file/d/1Y6qEOizdjxE-PucDX6yQr9PCjPfHUAEv/preview"></iframe>
+                <div class="core-row">
+                    <div>
+                        <h3><i class="fas fa-key"></i> Autenticación</h3>
+                        <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1Y6qEOizdjxE-PucDX6yQr9PCjPfHUAEv/preview')">
+                            <iframe src="https://drive.google.com/file/d/1Y6qEOizdjxE-PucDX6yQr9PCjPfHUAEv/preview"></iframe>
+                        </div>
                     </div>
                     <div class="code-snippet">auth.signInWithEmailAndPassword(email, password)
     .addOnSuccessListener {
@@ -309,10 +368,12 @@
     }</div>
                 </div>
 
-                <div>
-                    <h3><i class="fas fa-database"></i> Gestión CRUDS</h3>
-                    <div class="video-placeholder">
-                        <iframe src="https://drive.google.com/file/d/1feiBdZb-0GIo6otAzOuS8umfTuRT1SeR/preview"></iframe>
+                <div class="core-row">
+                    <div>
+                        <h3><i class="fas fa-database"></i> Gestión CRUDS</h3>
+                        <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1feiBdZb-0GIo6otAzOuS8umfTuRT1SeR/preview')">
+                            <iframe src="https://drive.google.com/file/d/1feiBdZb-0GIo6otAzOuS8umfTuRT1SeR/preview"></iframe>
+                        </div>
                     </div>
                     <div class="code-snippet">val data = hashMapOf(
     "name" to nombre,
@@ -325,10 +386,12 @@ else
     db.collection("products").document(editingProductId!!)</div>
                 </div>
 
-                <div>
-                    <h3><i class="fas fa-cloud-arrow-up"></i> Multimedia Supabase</h3>
-                    <div class="video-placeholder">
-                        <iframe src="https://drive.google.com/file/d/1jGOAKOoME57GCwu4dFx5Xv4WRHvn5anq/preview"></iframe>
+                <div class="core-row">
+                    <div>
+                        <h3><i class="fas fa-cloud-arrow-up"></i> Multimedia Supabase</h3>
+                        <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1jGOAKOoME57GCwu4dFx5Xv4WRHvn5anq/preview')">
+                            <iframe src="https://drive.google.com/file/d/1jGOAKOoME57GCwu4dFx5Xv4WRHvn5anq/preview"></iframe>
+                        </div>
                     </div>
                     <div class="code-snippet">val fileName = "prod_${System.currentTimeMillis()}.jpg"
 bucket.upload(path = fileName, data = bytes)
@@ -376,7 +439,7 @@ db.collection("products").document(id).delete()</div>
         <div class="glass-card">
             <h2><i class="fas fa-play-circle"></i> Demo: UX & Navegación</h2>
             <p>Visualización del flujo premium, animaciones de categorías y diseño Glassmorphism de la tienda.</p>
-            <div class="video-placeholder">
+            <div class="video-placeholder ux-video-container" onclick="openZoom('https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview')">
                 <iframe src="https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview"></iframe>
                 <div class="video-label">High-End Interface UX</div>
             </div>
@@ -399,7 +462,7 @@ db.collection("products").document(id).delete()</div>
         <div class="glass-card">
             <h2><i class="fas fa-server"></i> Registro Real-Time (Backend)</h2>
             <p>Demostración de la entrada de datos simultánea en Firebase (Auth/Store) y Supabase (Storage).</p>
-            <div class="video-placeholder">
+            <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7/preview')">
                 <iframe src="https://drive.google.com/file/d/1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7/preview"></iframe>
                 <div class="video-label">Firebase & Supabase Sync</div>
             </div>
@@ -444,5 +507,20 @@ db.collection("products").document(id).delete()</div>
         </div>
     </div>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeZoom()">&times;</span>
+        <iframe id="zoom-iframe" src=""></iframe>
+    </div>
+
+    <script>
+        function openZoom(url) {
+            document.getElementById('zoom-iframe').src = url;
+            document.getElementById('lightbox').classList.add('active');
+        }
+        function closeZoom() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.getElementById('zoom-iframe').src = '';
+        }
+    </script>
 </body>
 </html>
