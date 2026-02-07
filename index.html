@@ -403,41 +403,95 @@
         <header>
             <div class="badge">DR PREMIUM UTILITIES</div>
             <h1>Ecosistema 2.0</h1>
-            <p style="color: #94a3b8; font-size: 1.2rem;">Arquitectura Híbrida: Firebase + Supabase + Jetpack Compose</p>
+            <p style="color: #94a3b8; font-size: 1.2rem;">Arquitectura Híbrida de Alto Rendimiento: Firebase + Supabase + Jetpack Compose</p>
         </header>
 
         <div class="glass-card">
-            <h2><i class="fas fa-microchip"></i> Core: Motor de la Aplicación</h2>
+            <h2><i class="fas fa-play-circle"></i> Visualización: UX & Interfaz</h2>
+            <p>Explora el flujo de navegación premium, las animaciones fluidas por categorías y el diseño <i>Glassmorphism</i> diseñado para una experiencia de compra de alta gama.</p>
+            <div class="video-placeholder ux-video-container" onclick="openZoom('https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview')">
+                <iframe src="https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview" loading="lazy"></iframe>
+                <div class="video-label">High-End Interface UX</div>
+            </div>
+        </div>
+
+        <div class="glass-card" style="border-left: 4px solid var(--premium-gold);">
+            <h2><i class="fas fa-cart-shopping"></i> Ciclo de Venta y Carrito</h2>
+            <div class="feature-grid">
+                <div class="highlight-item">
+                    <h3>🛒 Carrito Inteligente</h3>
+                    <p>Gestión de ítems con cálculo automático de totales basado en unidades dinámicas (ml, gr, oz). Sincronización absoluta con la sesión activa.</p>
+                </div>
+                <div class="highlight-item">
+                    <h3>📑 Registro Atómico</h3>
+                    <p>Al procesar una compra, se genera un registro histórico en Firestore y se actualiza el stock en una única transacción segura.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-shield-halved"></i> Seguridad y Jerarquía de Acceso</h2>
+            <div class="feature-grid">
+                <div class="highlight-item" style="border-left-color: var(--admin-purple);">
+                    <h3>🛡️ Panel Administrativo</h3>
+                    <p>Acceso restringido mediante <code>UID</code>. Habilita el control maestro de inventario, gestión de stock y panel flotante.</p>
+                </div>
+                <div class="highlight-item">
+                    <h3>👤 Perfil de Cliente</h3>
+                    <p>Autenticación fluida para la gestión de datos personales, historial de pedidos y persistencia de preferencias.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-boxes-stacked"></i> Control de Inventario (CRUD)</h2>
+            <p style="margin-bottom: 20px;">Módulo avanzado para el administrador con control total sobre el catálogo.</p>
+            <div class="feature-grid">
+                <div class="highlight-item">
+                    <i class="fas fa-plus-circle" style="color: var(--neon-cyan); margin-bottom: 10px;"></i>
+                    <h3>Edición Dinámica</h3>
+                    <p>Ingreso de productos con validación estricta de tipos de datos, garantizando la integridad en la base de datos.</p>
+                </div>
+                <div class="highlight-item">
+                    <i class="fas fa-sync" style="color: var(--neon-cyan); margin-bottom: 10px;"></i>
+                    <h3>Sincronización Real-Time</h3>
+                    <p>Uso de <code>Snapshots</code>: cualquier cambio en el stock se refleja instantáneamente en todos los dispositivos conectados.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-microchip"></i> Core: Arquitectura del Sistema</h2>
             <div class="core-section">
                 <div class="core-row">
                     <div>
-                        <h3><i class="fas fa-key"></i> Autenticación</h3>
+                        <h3><i class="fas fa-key"></i> Autenticación Segura</h3>
                         <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1Y6qEOizdjxE-PucDX6yQr9PCjPfHUAEv/preview')">
                             <iframe src="https://drive.google.com/file/d/1Y6qEOizdjxE-PucDX6yQr9PCjPfHUAEv/preview" loading="lazy"></iframe>
                         </div>
                     </div>
                     <div>
-                        <div class="code-header"><span><i class="fas fa-code"></i> IMPLEMENTACIÓN TÉCNICA</span> <i class="fas fa-circle" style="font-size: 8px;"></i></div>
+                        <div class="code-header"><span><i class="fas fa-code"></i> LOGIN HANDLER</span> <i class="fas fa-circle" style="font-size: 8px;"></i></div>
                         <div class="code-snippet">auth.signInWithEmailAndPassword(email, password)
     .addOnSuccessListener {
         _error.value = ""
         onSuccess()
     }
     .addOnFailureListener { exception ->
-        _error.value = exception.message ?: "Error al iniciar sesión"
+        _error.value = exception.message ?: "Error de acceso"
     }</div>
                     </div>
                 </div>
 
                 <div class="core-row">
                     <div>
-                        <h3><i class="fas fa-database"></i> Gestión CRUDS</h3>
+                        <h3><i class="fas fa-database"></i> Gestión de Datos (CRUD)</h3>
                         <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1feiBdZb-0GIo6otAzOuS8umfTuRT1SeR/preview')">
                             <iframe src="https://drive.google.com/file/d/1feiBdZb-0GIo6otAzOuS8umfTuRT1SeR/preview" loading="lazy"></iframe>
                         </div>
                     </div>
                     <div>
-                        <div class="code-header"><span><i class="fas fa-terminal"></i> LÓGICA DE PERSISTENCIA</span> <i class="fas fa-circle" style="font-size: 8px;"></i></div>
+                        <div class="code-header"><span><i class="fas fa-terminal"></i> PERSISTENCIA LOGIC</span> <i class="fas fa-circle" style="font-size: 8px;"></i></div>
                         <div class="code-snippet">val data = hashMapOf(
     "name" to nombre,
     "price" to (precioForm.toDoubleOrNull() ?: 0.0),
@@ -469,66 +523,8 @@ db.collection("products").document(id).delete()</div>
         </div>
 
         <div class="glass-card">
-            <h2><i class="fas fa-shield-halved"></i> Seguridad y Roles de Acceso</h2>
-            <div class="feature-grid">
-                <div class="highlight-item" style="border-left-color: var(--admin-purple);">
-                    <h3>🛡️ Acceso Administrativo</h3>
-                    <p>Validación mediante <code>UID</code> y correo jerárquico. Habilita el CRUD maestro, gestión de stock y panel de control flotante.</p>
-                </div>
-                <div class="highlight-item">
-                    <h3>👤 Experiencia del Cliente</h3>
-                    <p>Autenticación fluida que permite la gestión de perfil personal, historial de compras y persistencia de carrito.</p>
-                </div>
-                <div class="highlight-item" style="border-left-color: var(--premium-gold);">
-                    <h3>☁️ Integración Supabase</h3>
-                    <p>Manejo de activos multimedia (Imágenes de productos) mediante Supabase Storage, vinculados por URL en tiempo real.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-card">
-            <h2><i class="fas fa-boxes-stacked"></i> Control de Inventario & CRUD</h2>
-            <p style="margin-bottom: 20px;">El administrador posee control total sobre el catálogo de perfumería y accesorios.</p>
-            <div class="feature-grid">
-                <div class="highlight-item">
-                    <i class="fas fa-plus-circle" style="color: var(--neon-cyan); margin-bottom: 10px;"></i>
-                    <h3>Agregar & Editar</h3>
-                    <p>Ingreso de nuevos productos con validación de tipos de datos (evitando errores de Double/Long en Firestore).</p>
-                </div>
-                <div class="highlight-item">
-                    <i class="fas fa-sync" style="color: var(--neon-cyan); margin-bottom: 10px;"></i>
-                    <h3>Sincronización Firestore</h3>
-                    <p>Uso de <code>Snapshots</code> para que cualquier cambio en el inventario se refleje al instante en todos los clientes.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-card">
-            <h2><i class="fas fa-play-circle"></i> Demo: UX & Navegación</h2>
-            <p>Visualización del flujo premium, animaciones de categorías y diseño Glassmorphism de la tienda.</p>
-            <div class="video-placeholder ux-video-container" onclick="openZoom('https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview')">
-                <iframe src="https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview" loading="lazy"></iframe>
-                <div class="video-label">High-End Interface UX</div>
-            </div>
-        </div>
-
-        <div class="glass-card" style="border-left: 4px solid var(--premium-gold);">
-            <h2><i class="fas fa-cart-shopping"></i> Flujo de Compra y Carrito</h2>
-            <div class="feature-grid">
-                <div class="highlight-item">
-                    <h3>🛒 Carrito Persistente</h3>
-                    <p>Gestión de ítems con cálculo automático de totales basado en unidades (ml, gr, oz). Sincronizado con la sesión del usuario.</p>
-                </div>
-                <div class="highlight-item">
-                    <h3>📑 Registro de Órdenes</h3>
-                    <p>Al procesar una compra, se genera un registro histórico en Firestore y se actualiza el stock de forma atómica.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-card">
-            <h2><i class="fas fa-server"></i> Registro Real-Time (Backend)</h2>
-            <p>Demostración de la entrada de datos simultánea en Firebase (Auth/Store) y Supabase (Storage).</p>
+            <h2><i class="fas fa-server"></i> Monitoreo Backend en Tiempo Real</h2>
+            <p>Demostración técnica de la entrada de datos simultánea en Firebase (Auth/Store) y Supabase (Storage) trabajando en paralelo.</p>
             <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7/preview')">
                 <iframe src="https://drive.google.com/file/d/1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7/preview" loading="lazy"></iframe>
                 <div class="video-label">Firebase & Supabase Sync</div>
@@ -536,24 +532,24 @@ db.collection("products").document(id).delete()</div>
         </div>
 
         <div class="glass-card">
-            <h2><i class="fas fa-microchip"></i> Highlights Técnicos</h2>
+            <h2><i class="fas fa-microchip"></i> Stack Tecnológico</h2>
             <div class="feature-grid">
                 <ul>
                     <li><i class="fas fa-terminal"></i> Arquitectura MVVM Clean.</li>
-                    <li><i class="fas fa-gem"></i> Estética Glossy con Jetpack Compose.</li>
-                    <li><i class="fas fa-bolt"></i> Carga asíncrona de imágenes (Coil).</li>
+                    <li><i class="fas fa-gem"></i> Interfaz Nativa con Jetpack Compose.</li>
+                    <li><i class="fas fa-bolt"></i> Carga asíncrona (Coil Library).</li>
                 </ul>
                 <ul>
-                    <li><i class="fas fa-filter"></i> Filtrado reactivo por departamentos.</li>
-                    <li><i class="fas fa-code-branch"></i> Type-safe Navigation.</li>
+                    <li><i class="fas fa-filter"></i> Filtrado reactivo por categorías.</li>
+                    <li><i class="fas fa-code-branch"></i> Navegación Type-safe.</li>
                     <li><i class="fas fa-expand"></i> Skeleton Screen Shimmer Effect.</li>
                 </ul>
             </div>
         </div>
 
         <div class="glass-card" style="text-align: center; border: 1px solid var(--neon-cyan);">
-            <h2><i class="fas fa-envelope-open-text"></i> ¿Deseas contactar con el desarrollador?</h2>
-            <p>Para consultas técnicas, soporte o colaboraciones sobre este ecosistema:</p>
+            <h2><i class="fas fa-envelope-open-text"></i> Contacto para Consultas Técnicas</h2>
+            <p>¿Interesado en implementar este ecosistema o necesitas soporte especializado?</p>
             <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
                 <a href="mailto:diegoruperti1987@hotmail.com" class="contact-link">
                     <i class="fas fa-at"></i> diegoruperti1987@hotmail.com
@@ -569,7 +565,7 @@ db.collection("products").document(id).delete()</div>
             © 2026 DR PREMIUM UTILITIES | Ecosistema Digital de Alta Gama<br>
             Desarrollado con precisión por <b>Diego Ruperti</b><br>
             <a href="https://diegofernandorupertigordon-glitch.github.io/Html-Utility-2.0/" style="color: var(--neon-cyan); text-decoration: none; font-size: 0.75rem; opacity: 0.7; display: block; margin-top: 10px;">
-                <i class="fas fa-globe"></i> https://diegofernandorupertigordon-glitch.github.io/Html-Utility-2.0/
+                <i class="fas fa-globe"></i> Visitar Sitio Web Oficial
             </a>
         </div>
     </div>
