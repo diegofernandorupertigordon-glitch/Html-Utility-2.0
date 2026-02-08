@@ -202,7 +202,7 @@
             color: var(--neon-cyan);
             border: 1px solid rgba(0, 229, 255, 0.3);
             z-index: 10;
-            pointer-events: none; /* No interfiere con el click */
+            pointer-events: none; 
         }
         /* Estilos de Código */
         .code-snippet {
@@ -266,12 +266,21 @@
             height: 80%;
             border-radius: 20px;
             border: 2px solid var(--neon-cyan);
+            position: relative;
+            z-index: 100000;
+            pointer-events: auto;
         }
         .close-btn {
             position: absolute;
-            top: 20px; right: 30px;
-            color: white; font-size: 3rem; cursor: pointer;
+            top: 20px; 
+            right: 30px;
+            color: white; 
+            font-size: 3rem; 
+            cursor: pointer;
             transition: 0.3s;
+            /* --- AÑADE ESTO --- */
+            z-index: 100001;   /* Para que siempre esté sobre el video */
+            line-height: 1;    /* Para que la X no se desplace hacia abajo */
         }
         .close-btn:hover { color: var(--neon-cyan); }
 
@@ -484,7 +493,27 @@ val publicUrl = ".../Utility/$fileName"
             if (progress) progress.style.width = scrolled + "%";
         };
 
+        // 2. FUNCIONES PARA EXPANDIR VIDEO (Lo que te faltaba)
+        function openZoom(videoUrl) {
+        const lightbox = document.getElementById('lightbox');
+        const iframe = document.getElementById('zoom-iframe');
         
+        iframe.src = videoUrl; // Asigna la URL del video al iframe del zoom
+        lightbox.classList.add('active'); // Muestra el fondo oscuro
+        document.body.style.overflow = 'hidden'; // Bloquea el scroll del fondo
+    }
+
+        function closeZoom() {
+        const lightbox = document.getElementById('lightbox');
+        const iframe = document.getElementById('zoom-iframe');
+        
+        if (lightbox && iframe) { // <--- Esta validación es oro puro
+        lightbox.classList.remove('active');
+        iframe.src = "";
+        document.body.style.overflow = 'auto';
+        }
+    }
     </script>
+    
 </body>
 </html>
