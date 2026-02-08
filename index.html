@@ -204,7 +204,7 @@
             position: relative;
             z-index: 2;
             background: transparent;
-            pointer-events: auto; 
+            pointer-events: none; /* Mejorado para evitar interacción accidental antes del zoom */
         }
 
         .video-label {
@@ -395,16 +395,22 @@
             <div class="badge">DR PREMIUM UTILITIES</div>
             <h1>Ecosistema 2.0</h1>
             <p style="color: #94a3b8; font-size: 1.2rem;">Arquitectura Híbrida de Alto Rendimiento: Firebase + Supabase + Jetpack Compose</p>
+            <p style="color: #64748b; font-size: 0.9rem; margin-top: 10px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Un sistema integral diseñado para la gestión de perfumería de alta gama, donde la reactividad y la persistencia de datos convergen en una experiencia de usuario nativa y fluida.
+            </p>
         </header>
 
         <div class="glass-card">
-            <h2><i class="fas fa-microchip"></i> Core: Arquitectura del Sistema (Demos)</h2>
+            <h2><i class="fas fa-microchip"></i> Core: Arquitectura del Sistema (Demos Técnicos)</h2>
+            <p style="margin-bottom: 30px;">Análisis detallado de la lógica de negocio y el flujo de datos asíncronos en las capas críticas del sistema.</p>
+            
             <div class="core-section">
                 <div class="core-row">
                     <div>
-                        <h3><i class="fas fa-key"></i> Autenticación Segura</h3>
+                        <h3><i class="fas fa-key"></i> 1. Autenticación Robusta</h3>
+                        <p style="margin-bottom: 10px;">Implementación de Firebase Auth para un control de acceso seguro y gestión de estados de error.</p>
                         <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1Y6qEOizdjxE-PucDX6yQr9PCjPfHUAEv/preview')">
-                            <iframe src="https://drive.google.com/file/d/1Y6qEOizdjxE-PucDX6yQr9PCjPfHUAEv/preview" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://drive.google.com/file/d/1Y6qEOizdjxE-PucDX6yQr9PCjPfHUAEv/preview" allow="autoplay; encrypted-media" loading="lazy"></iframe>
                         </div>
                     </div>
                     <div>
@@ -412,7 +418,7 @@
                         <div class="code-snippet">auth.signInWithEmailAndPassword(email, password)
     .addOnSuccessListener {
         _error.value = ""
-        onSuccess()
+        onSuccess() // Navegación reactiva
     }
     .addOnFailureListener { exception ->
         _error.value = exception.message ?: "Error de acceso"
@@ -422,9 +428,10 @@
 
                 <div class="core-row">
                     <div>
-                        <h3><i class="fas fa-database"></i> Gestión de Datos (CRUD)</h3>
+                        <h3><i class="fas fa-database"></i> 2. Gestión de Inventario (CRUD)</h3>
+                        <p style="margin-bottom: 10px;">Control total sobre la colección de productos con referencias dinámicas en Firestore.</p>
                         <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1feiBdZb-0GIo6otAzOuS8umfTuRT1SeR/preview')">
-                            <iframe src="https://drive.google.com/file/d/1feiBdZb-0GIo6otAzOuS8umfTuRT1SeR/preview" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://drive.google.com/file/d/1feiBdZb-0GIo6otAzOuS8umfTuRT1SeR/preview" allow="autoplay; encrypted-media" loading="lazy"></iframe>
                         </div>
                     </div>
                     <div>
@@ -443,104 +450,89 @@ else
 
                 <div class="core-row">
                     <div>
-                        <h3><i class="fas fa-cloud-arrow-up"></i> Multimedia Supabase</h3>
+                        <h3><i class="fas fa-cloud-arrow-up"></i> 3. Cloud Storage con Supabase</h3>
+                        <p style="margin-bottom: 10px;">Optimización multimedia: subida de archivos binarios y persistencia de URLs públicas.</p>
                         <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1jGOAKOoME57GCwu4dFx5Xv4WRHvn5anq/preview')">
-                            <iframe src="https://drive.google.com/file/d/1jGOAKOoME57GCwu4dFx5Xv4WRHvn5anq/preview" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://drive.google.com/file/d/1jGOAKOoME57GCwu4dFx5Xv4WRHvn5anq/preview" allow="autoplay; encrypted-media" loading="lazy"></iframe>
                         </div>
                     </div>
                     <div>
                         <div class="code-header"><span><i class="fas fa-cloud"></i> STORAGE HANDLER</span> <i class="fas fa-circle" style="font-size: 8px;"></i></div>
                         <div class="code-snippet">val fileName = "prod_${System.currentTimeMillis()}.jpg"
-bucket.upload(path = fileName, data = bytes)
+bucket.upload(path = fileName, data = bytes) // Supabase Storage
 val publicUrl = ".../Utility/$fileName"
-db.collection("products").document(id).delete()</div>
+// Persistencia en Firestore para carga ultra-rápida</div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="glass-card">
-            <h2><i class="fas fa-microchip"></i> Stack Tecnológico</h2>
+            <h2><i class="fas fa-layer-group"></i> Stack Tecnológico & Arquitectura</h2>
+            <p style="margin-bottom: 20px;">Utilizamos un stack moderno que prioriza la mantenibilidad y la velocidad de respuesta.</p>
             <div class="feature-grid">
                 <ul>
-                    <li><i class="fas fa-terminal"></i> Arquitectura MVVM Clean.</li>
-                    <li><i class="fas fa-gem"></i> Interfaz Nativa con Jetpack Compose.</li>
-                    <li><i class="fas fa-bolt"></i> Carga asíncrona (Coil Library).</li>
+                    <li><i class="fas fa-terminal"></i> <b>MVVM Clean Architecture:</b> Código escalable.</li>
+                    <li><i class="fas fa-gem"></i> <b>Jetpack Compose:</b> UI declarativa y fluida.</li>
+                    <li><i class="fas fa-bolt"></i> <b>Corrutinas de Kotlin:</b> Manejo asíncrono eficiente.</li>
                 </ul>
                 <ul>
-                    <li><i class="fas fa-filter"></i> Filtrado reactivo por categorías.</li>
-                    <li><i class="fas fa-code-branch"></i> Navegación Type-safe.</li>
-                    <li><i class="fas fa-expand"></i> Skeleton Screen Shimmer Effect.</li>
+                    <li><i class="fas fa-filter"></i> <b>Filtrado Reactivo:</b> Categorización inteligente.</li>
+                    <li><i class="fas fa-code-branch"></i> <b>Type-safe Navigation:</b> Navegación sin errores.</li>
+                    <li><i class="fas fa-expand"></i> <b>Shimmer Effects:</b> Carga visual premium.</li>
                 </ul>
             </div>
         </div>
 
         <div class="glass-card">
-            <h2><i class="fas fa-play-circle"></i> Visualización: UX & Interfaz</h2>
-            <p>Explora el flujo de navegación premium, las animaciones fluidas por categorías y el diseño <i>Glassmorphism</i> diseñado para una experiencia de compra de alta gama.</p>
+            <h2><i class="fas fa-play-circle"></i> Visualización: UX & Interfaz Premium</h2>
+            <p style="margin-bottom: 20px;">Explora el diseño <i>Glassmorphism</i> diseñado para resaltar productos de alta gama.</p>
             <div class="video-placeholder ux-video-container" onclick="openZoom('https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview')">
-                <iframe src="https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+                <iframe src="https://drive.google.com/file/d/1GVE3xdwQIRXDut96DRrclmxXvF44tU2F/preview" allow="autoplay; encrypted-media" loading="lazy"></iframe>
                 <div class="video-label">High-End Interface UX</div>
             </div>
         </div>
 
         <div class="glass-card">
-            <h2><i class="fas fa-server"></i> Monitoreo Backend en Tiempo Real</h2>
-            <p>Demostración técnica de la entrada de datos simultánea en Firebase (Auth/Store) y Supabase (Storage) trabajando en paralelo.</p>
+            <h2><i class="fas fa-server"></i> Monitoreo Backend: Integridad de Registros</h2>
+            <p style="margin-bottom: 20px;">Auditoría técnica: sincronización entre Firebase y el panel de Supabase.</p>
             <div class="video-placeholder" onclick="openZoom('https://drive.google.com/file/d/1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7/preview')">
-                <iframe src="https://drive.google.com/file/d/1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7/preview" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-                <div class="video-label">Firebase & Supabase Sync</div>
+                <iframe src="https://drive.google.com/file/d/1NHcbD0O8_t8z8qSvU-8srDb4k9hGhpK7/preview" allow="autoplay; encrypted-media" loading="lazy"></iframe>
+                <div class="video-label">Cloud Data Consistency Analysis</div>
             </div>
         </div>
 
         <div class="glass-card" style="border-left: 4px solid var(--premium-gold);">
-            <h2><i class="fas fa-cart-shopping"></i> Ciclo de Venta y Carrito</h2>
+            <h2><i class="fas fa-cart-shopping"></i> Inteligencia Comercial y Transaccional</h2>
             <div class="feature-grid">
                 <div class="highlight-item">
-                    <h3>🛒 Carrito Inteligente</h3>
-                    <p>Gestión de ítems con cálculo automático de totales basado en unidades dinámicas (ml, gr, oz). Sincronización absoluta con la sesión activa.</p>
+                    <h3>🛒 Carrito Multidimensional</h3>
+                    <p>Gestión inteligente de ítems con normalización de unidades y persistencia de sesión.</p>
                 </div>
                 <div class="highlight-item">
-                    <h3>📑 Registro Atómico</h3>
-                    <p>Al procesar una compra, se genera un registro histórico en Firestore y se actualiza el stock en una única transacción segura.</p>
+                    <h3>📑 Transaccionalidad Atómica</h3>
+                    <p>Sincronización de ventas y stock en tiempo real sin inconsistencias.</p>
                 </div>
             </div>
         </div>
 
         <div class="glass-card">
-            <h2><i class="fas fa-shield-halved"></i> Seguridad y Jerarquía de Acceso</h2>
+            <h2><i class="fas fa-shield-halved"></i> Capas de Seguridad y Gobierno de Datos</h2>
             <div class="feature-grid">
                 <div class="highlight-item" style="border-left-color: var(--admin-purple);">
-                    <h3>🛡️ Panel Administrativo</h3>
-                    <p>Acceso restringido mediante <code>UID</code>. Habilita el control maestro de inventario, gestión de stock y panel flotante.</p>
+                    <h3>🛡️ Control de Acceso Granular (RBAC)</h3>
+                    <p>Seguridad basada en roles mediante UID verificado para funciones maestras.</p>
                 </div>
                 <div class="highlight-item">
-                    <h3>👤 Perfil de Cliente</h3>
-                    <p>Autenticación fluida para la gestión de datos personales, historial de pedidos y persistencia de preferencias.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-card">
-            <h2><i class="fas fa-boxes-stacked"></i> Control de Inventario (CRUD)</h2>
-            <p style="margin-bottom: 20px;">Módulo avanzado para el administrador con control total sobre el catálogo.</p>
-            <div class="feature-grid">
-                <div class="highlight-item">
-                    <i class="fas fa-plus-circle" style="color: var(--neon-cyan); margin-bottom: 10px;"></i>
-                    <h3>Edición Dinámica</h3>
-                    <p>Ingreso de productos con validación estricta de tipos de datos, garantizando la integridad en la base de datos.</p>
-                </div>
-                <div class="highlight-item">
-                    <i class="fas fa-sync" style="color: var(--neon-cyan); margin-bottom: 10px;"></i>
-                    <h3>Sincronización Real-Time</h3>
-                    <p>Uso de <code>Snapshots</code>: cualquier cambio en el stock se refleja instantáneamente en todos los dispositivos conectados.</p>
+                    <h3>👤 Perfil Omnicanal del Cliente</h3>
+                    <p>Centralización de historial y deseos bajo protocolos de cifrado robustos.</p>
                 </div>
             </div>
         </div>
 
         <div class="glass-card" style="text-align: center; border: 1px solid var(--neon-cyan);">
-            <h2><i class="fas fa-envelope-open-text"></i> Contacto para Consultas Técnicas</h2>
-            <p>¿Interesado en implementar este ecosistema o necesitas soporte especializado?</p>
+            <h2><i class="fas fa-envelope-open-text"></i> Consultas Técnicas & Soporte</h2>
+            <p>Ecosistema desarrollado como proyecto de ingeniería de software.</p>
             <div style="display: flex; justify-content: center; gap: 30px; margin-top: 20px;">
                 <a href="mailto:diegoruperti1987@hotmail.com" class="contact-link">
                     <i class="fas fa-at"></i> diegoruperti1987@hotmail.com
@@ -553,8 +545,8 @@ db.collection("products").document(id).delete()</div>
         </a>
 
         <div class="footer-text">
-            © 2026 DR PREMIUM UTILITIES | Ecosistema Digital de Alta Gama<br>
-            Desarrollado con precisión por <b>Diego Ruperti</b><br>
+            © 2026 DR PREMIUM UTILITIES | Ingeniería de Software de Alta Gama<br>
+            Arquitectura y Desarrollo por <b>Diego Ruperti</b><br>
             <a href="https://diegofernandorupertigordon-glitch.github.io/Html-Utility-2.0/" style="color: var(--neon-cyan); text-decoration: none; font-size: 0.75rem; opacity: 0.7; display: block; margin-top: 10px;">
                 <i class="fas fa-globe"></i> Visitar Sitio Web Oficial
             </a>
@@ -567,30 +559,40 @@ db.collection("products").document(id).delete()</div>
     </div>
 
     <script>
+        // Barra de progreso de lectura
         window.onscroll = function() {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            document.getElementById("scroll-progress").style.width = scrolled + "%";
+            const progress = document.getElementById("scroll-progress");
+            if (progress) progress.style.width = scrolled + "%";
         };
 
+        // Función para abrir videos en zoom
         function openZoom(url) {
+            // Aseguramos que el video inicie automáticamente al abrir el zoom
             const autoPlayUrl = url.includes('?') ? url + "&autoplay=1" : url + "?autoplay=1";
             const iframe = document.getElementById('zoom-iframe');
             const lightbox = document.getElementById('lightbox');
             
-            iframe.src = autoPlayUrl;
-            lightbox.classList.add('active');
+            if (iframe && lightbox) {
+                iframe.src = autoPlayUrl;
+                lightbox.classList.add('active');
+            }
         }
 
+        // Función para cerrar zoom
         function closeZoom() {
             const lightbox = document.getElementById('lightbox');
             const iframe = document.getElementById('zoom-iframe');
             
-            lightbox.classList.remove('active');
-            iframe.src = '';
+            if (lightbox && iframe) {
+                lightbox.classList.remove('active');
+                iframe.src = ''; // Detenemos el video al cerrar
+            }
         }
 
+        // Cerrar con tecla Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 closeZoom();
