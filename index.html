@@ -490,36 +490,7 @@ val publicUrl = ".../Utility/$fileName"
             if (progress) progress.style.width = scrolled + "%";
         };
 
-        // Función para abrir videos en zoom
-        function openZoom(url) {
-            // Aseguramos que el video inicie automáticamente al abrir el zoom
-            const autoPlayUrl = url.includes('?') ? url + "&autoplay=1" : url + "?autoplay=1";
-            const iframe = document.getElementById('zoom-iframe');
-            const lightbox = document.getElementById('lightbox');
-            
-            if (iframe && lightbox) {
-                iframe.src = autoPlayUrl;
-                lightbox.classList.add('active');
-            }
-        }
-
-        // Función para cerrar zoom
-        function closeZoom() {
-            const lightbox = document.getElementById('lightbox');
-            const iframe = document.getElementById('zoom-iframe');
-            
-            if (lightbox && iframe) {
-                lightbox.classList.remove('active');
-                iframe.src = ''; // Detenemos el video al cerrar
-            }
-        }
-
-        // Cerrar con tecla Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                closeZoom();
-            }
-        });
+        
     </script>
 </body>
 </html>
