@@ -240,12 +240,14 @@
 
         .core-row {
             display: grid;
-            grid-template-columns: 45% 55%; 
-            gap: 30px;
-            align-items: start; 
+            grid-template-columns: 1fr; /* Cambiado de 45% 55% a 1fr para que ocupe todo el ancho */
+            gap: 20px;
+            align-items: start;
+            margin-bottom: 50px; /* Un poco más de espacio entre secciones */
         }
 
-        @media (max-width: 850px) {
+        /* El código de abajo ya lo tienes, puedes dejarlo igual para móviles */
+            @media (max-width: 850px) {
             .core-row { grid-template-columns: 1fr; }
         }
 
@@ -367,14 +369,14 @@
                     <div>
                         <div class="code-header"><span><i class="fas fa-terminal"></i> PERSISTENCIA LOGIC</span> <i class="fas fa-circle" style="font-size: 8px;"></i></div>
                         <div class="code-snippet">val data = hashMapOf(
-    "name" to nombre,
-    "price" to (precioForm.toDoubleOrNull() ?: 0.0),
-    "stock" to (stockForm.toIntOrNull() ?: 0)
-)
-val docRef = if (editingProductId == null) 
-    db.collection("products").document() 
-else 
-    db.collection("products").document(editingProductId!!)</div>
+                        "name" to nombre,
+                        "price" to (precioForm.toDoubleOrNull() ?: 0.0),
+                        "stock" to (stockForm.toIntOrNull() ?: 0)
+                        )
+                        val docRef = if (editingProductId == null) 
+                        db.collection("products").document() 
+                        else 
+                        db.collection("products").document(editingProductId!!)</div>
                     </div>
                 </div>
 
@@ -389,9 +391,9 @@ else
                     <div>
                         <div class="code-header"><span><i class="fas fa-cloud"></i> STORAGE HANDLER</span> <i class="fas fa-circle" style="font-size: 8px;"></i></div>
                         <div class="code-snippet">val fileName = "prod_${System.currentTimeMillis()}.jpg"
-bucket.upload(path = fileName, data = bytes) // Supabase Storage
-val publicUrl = ".../Utility/$fileName"
-// Persistencia en Firestore para carga ultra-rápida</div>
+                        bucket.upload(path = fileName, data = bytes) // Supabase Storage
+                        val publicUrl = ".../Utility/$fileName"
+                        // Persistencia en Firestore para carga ultra-rápida</div>
                     </div>
                 </div>
             </div>
